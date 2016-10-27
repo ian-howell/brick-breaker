@@ -3,26 +3,38 @@
 
 Player::Player(int row, int col)
 {
+    this->width = 11;
     this->row = row;
-    this->col = col;
-    this->width = 5;
+    this->col = (col - (this->width / 2));
 }
 
-void Player::move(direction dir)
+void Player::move(Direction dir)
 {
-    int new_row = row;
+    int new_col = col;
     if (dir == LEFT)
-        new_row--;
+        new_col--;
     else if (dir == RIGHT)
-        new_row++;
+        new_col++;
 
-    if (is_valid(new_row))
-        row = new_row;
+    if (is_valid(new_col))
+    {
+        draw(BLACK);
+        col = new_col;
+        draw(WHITE);
+    }
 
     return;
 }
 
-bool is_valid(int row)
+bool Player::is_valid(int col)
 {
-    return (row >= 0 && row < COLS);
+    return (col >= 0 && col < (COLS - width) + 1);
+}
+
+void Player::draw(Color color)
+{
+    attron(COLOR_PAIR(color));
+    for (int i = col; i < (width + col); i++)
+        mvprintw(row, i, " ");
+    attroff(COLOR_PAIR(color));
 }
