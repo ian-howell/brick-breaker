@@ -8,12 +8,14 @@ class Player
         int width;
         int row;
         int col;
+        Color color;
 
         bool is_valid(int row);
 
     public:
-        Player(int row, int col);
+        Player(int row, int col, Color color);
         void move(Direction dir);
-        void draw(Color color);
+        void draw();
+        void clear();
 };
 #endif

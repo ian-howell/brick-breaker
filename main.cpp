@@ -17,8 +17,8 @@ int main()
     // Get the screen dimensions
     getmaxyx(stdscr, rows, cols);
 
-    Player* player = new Player(rows - 2, cols / 2);
-    player->draw(WHITE);
+    Player* player = new Player(rows - 2, cols / 2, WHITE);
+    player->draw();
     refresh();
 
     int c;
