@@ -9,8 +9,14 @@ enum Color
 
 enum Direction
 {
-    LEFT,
+    UP,
+    UPRIGHT,
     RIGHT,
+    DOWNRIGHT,
+    DOWN,
+    DOWNLEFT,
+    LEFT,
+    UPLEFT,
 };
 
 void init_colors();
