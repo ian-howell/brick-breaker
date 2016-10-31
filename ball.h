@@ -11,6 +11,7 @@ class Ball
         Color color;
 
         bool is_valid(int row, int col);
+        void clear();
 
     public:
         Ball(int row, int col, Direction dir, Color color);

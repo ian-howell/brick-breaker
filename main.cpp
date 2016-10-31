@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include <unistd.h>
 #include "player.h"
 #include "helpers.h"
 #include "ball.h"
@@ -11,6 +12,7 @@ int main()
     init_colors();
     cbreak();
     noecho();
+    nodelay(stdscr, TRUE);
     keypad(stdscr, TRUE);
     curs_set(0);
 
@@ -43,8 +45,8 @@ int main()
         // Naive way of moving the ball.
         // right now, the ball only moves when the player moves
         ball->move();
-        ball->draw();
         refresh();
+        usleep(100000);
     }
 
     endwin();

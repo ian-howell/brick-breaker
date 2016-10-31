@@ -11,6 +11,7 @@ Ball::Ball(int row, int col, Direction dir, Color color)
 
 void Ball::move()
 {
+    this->clear();
     // Naive approach to moving the ball
     // Current configuration does not account
     // for any sort of collision
@@ -33,6 +34,7 @@ void Ball::move()
             col++;
             break;
     }
+    this->draw();
     return;
 }
 
@@ -42,4 +44,11 @@ void Ball::draw()
     mvprintw(row, col, "B");
     attroff(COLOR_PAIR(color));
     return;
+}
+
+void Ball::clear()
+{
+    attron(COLOR_PAIR(BLACK));
+    mvprintw(row, col, " ");
+    attroff(COLOR_PAIR(BLACK));
 }
