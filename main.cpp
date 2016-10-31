@@ -1,13 +1,13 @@
 #include <ncurses.h>
 #include "player.h"
 #include "helpers.h"
+#include "ball.h"
 
 int main()
 {
     int rows;
     int cols;
     initscr();
-    /* start_color(); */
     init_colors();
     cbreak();
     noecho();
@@ -18,7 +18,9 @@ int main()
     getmaxyx(stdscr, rows, cols);
 
     Player* player = new Player(rows - 2, cols / 2, WHITE);
+    Ball* ball = new Ball(rows / 2, cols / 2, DOWNLEFT, WHITE);
     player->draw();
+    ball->draw();
     refresh();
 
     int c;
@@ -38,6 +40,10 @@ int main()
                 done = true;
                 break;
         }
+        // Naive way of moving the ball.
+        // right now, the ball only moves when the player moves
+        ball->move();
+        ball->draw();
         refresh();
     }
 
