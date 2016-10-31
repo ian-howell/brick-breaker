@@ -1,5 +1,6 @@
 #include <ncurses.h>
 #include <unistd.h>
+#include <string.h>
 #include "player.h"
 #include "helpers.h"
 #include "ball.h"
@@ -25,8 +26,17 @@ int main()
     ball->draw();
     refresh();
 
-    int c;
+    int c = '\0';
     bool done = false;
+    // Wait for the user to hit the spacebar
+    char start_msg[] = "Press the spabebar to begin";
+    mvprintw(2, (cols / 2) - strlen(start_msg) / 2, start_msg);
+    refresh();
+    while ((c = getchar()) != ' ');
+    clear();
+    player->draw();
+    ball->draw();
+    refresh();
     while (!done)
     {
         c = wgetch(stdscr);
