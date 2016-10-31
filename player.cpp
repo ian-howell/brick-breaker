@@ -19,9 +19,9 @@ void Player::move(Direction dir)
 
     if (is_valid(new_col))
     {
-        clear();
+        this->clear();
         col = new_col;
-        draw();
+        this->draw();
     }
 
     return;
