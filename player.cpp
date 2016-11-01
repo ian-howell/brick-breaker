@@ -13,23 +13,25 @@ void Player::move(Direction dir)
 {
     int new_col = col;
     if (dir == LEFT)
-        new_col--;
+        new_col -= 3;
     else if (dir == RIGHT)
-        new_col++;
+        new_col += 3;
 
-    if (is_valid(new_col))
-    {
-        this->clear();
-        col = new_col;
-        this->draw();
-    }
+    make_valid(new_col);
+    this->clear();
+    col = new_col;
+    this->draw();
 
     return;
 }
 
-bool Player::is_valid(int col)
+void Player::make_valid(int& c)
 {
-    return (col >= 0 && col < (COLS - width) + 1);
+    if (c < 0)
+        c = 0;
+    if (c > (COLS - width))
+        c = (COLS - width);
+    return;
 }
 
 void Player::draw()

@@ -10,7 +10,7 @@ class Player
         int col;
         Color color;
 
-        bool is_valid(int row);
+        void make_valid(int& c);
 
     public:
         Player(int row, int col, Color color);
