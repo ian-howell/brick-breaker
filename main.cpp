@@ -52,8 +52,7 @@ int main()
                 done = true;
                 break;
         }
-        // Naive way of moving the ball.
-        // right now, the ball only moves when the player moves
+        flushinp();
         ball->move();
         refresh();
         usleep(100000);
